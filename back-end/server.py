@@ -33,17 +33,17 @@ limiter = Limiter(get_remote_address, app=app, default_limits=["200 per day", "5
 def index():
     try:
         data = request.get_json()
-
-        aadhar_no = data.get("aadhar_no")
-        if aadhar_no not in UserData:
+        print(data)
+        aadhar_no = int(data.get("aadharno"))
+        if aadhar_no not in list(UserData.keys()):
             return jsonify({"error": "Invalid Aadhar Number"}), 400
 
         
-        otp_code = f"{randbelow(1000000):06}"
+        otp_code =f"{randbelow(1000000):06}"
         otp[aadhar_no] = otp_code
         email = UserData[aadhar_no]
 
-        return jsonify({"success":True , "otp":otp[aadhar_no]})
+        return jsonify({"isValid" : True, "code" : otp_code}), 200
         msg = Message(
             subject="UIDAI SMS Verification",
             sender=app.config["MAIL_USERNAME"],
@@ -52,10 +52,10 @@ def index():
         msg.body = f"Your OTP for Aadhaar (XX{str(aadhar_no)[-4:]}) is {otp_code}. To update Aadhaar, upload documents on myaadhaar.uidai.gov.in or visit Aadhaar Center. Call 1947 for info. - UIDAI"
         mail.send(msg)
 
-        return jsonify({"msg": "OTP sent successfully"}), 200
 
     except Exception as e:
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
 
+@app.route("/verifyotp")
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

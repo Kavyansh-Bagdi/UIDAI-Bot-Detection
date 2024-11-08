@@ -5,6 +5,7 @@ import './index.css'
 import Login from './components/Login'
 import Landing from './components/Landing'
 import Cards1 from './components/Cards1'
+import Dashboard from './components/Dashboard'
 // import Footer from './components/Footer'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Login />
       {/* <Landing/> */}
       {/* <Cards1/> */}
+      {/* <Dashboard/> */}
       
     </div>
   )

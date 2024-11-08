@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
+  
   const [aadhar, setAadhar] = useState({aadharno:""});
   const [showOTP, setShowOTP] = useState(false);
   const [otp, setOTP] = useState("");
@@ -130,14 +133,11 @@ const Login = () => {
 
   const verifyOTP = () => {
     const otpData = {
-      aadharno: aadhar.aadharno,
-      otp: otp,
-      mouse_interaction: mouse_interaction,
-      keystroke_interaction: keystroke_interaction,
-      typing_interaction: typing_interaction
+      "aadharno": aadhar.aadharno,
+      "otp": otp,
     };
-
-    fetch('http://127.0.0.1:5000/verify-otp', {
+  
+    fetch('http://127.0.0.1:5000/verifyotp', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -146,16 +146,23 @@ const Login = () => {
     })
       .then(response => response.json())
       .then(data => {
-        if (data.isValid) {
-          window.location.href = '/dashboard';
-        } else {
-          alert("Invalid OTP!");
+        if(data.isCorr){
+          console.log(data);
+          navigate('/dashboard');
+
+        }
+        else{
+          console.log("Incorrect OTP");
         }
       })
       .catch(error => {
         console.error('Error verifying OTP:', error);
-      });
+      })
+      .then(data => {
+        console.log(data);
+      })
   };
+  
 
   return (
     <div className='border-b-2 w-full min-h-screen border-[#020b50] relative'>
@@ -165,54 +172,54 @@ const Login = () => {
       </header>
 
       <form action="" method="post" className='w-full mt-5 bg-white p-4 rounded-md'>
-        <h1 className='font-bold text-[#020b50] text-center text-xl'>Login to Aadhaar via OTP</h1>
-        <div className='gap-4 p-6 w-1/3 shadow-lg flex flex-col items-center justify-center h-auto min-h-[14rem] mx-auto mt-5' 
-             style={{borderTop: '4px solid', borderImage: 'linear-gradient(to right, #020b50, #2C3A8F) 1'}}>
+    <h1 className='font-bold text-[#020b50] text-center text-xl'>Login to Aadhaar via OTP</h1>
+    <div className='gap-4 p-6 w-1/3 shadow-lg flex flex-col items-center justify-center h-80 min-h-[14rem] mx-auto mt-5' 
+         style={{borderTop: '4px solid', borderImage: 'linear-gradient(to right, #020b50, #2C3A8F) 1'}}>
+      <input 
+        required 
+        type="text"
+        name="aadharno" 
+        value={aadhar.aadharno} 
+        onChange={changeHandler}
+        id="aadharno" 
+        placeholder='Enter your Aadhaar Number' 
+        className='w-full p-3 placeholder:text-black rounded-md text-xl outline-none border-b-2 border-black -mt-9 -mb-2'
+        disabled={showOTP}  // Disable Aadhar input when OTP is shown
+      />
+      
+      {!showOTP ? (
+        <button 
+          className='bg-gray-400  hover:bg-blue-900 hover:scale-105 transition-all duration-300 text-white p-2 rounded-md w-full mt-8' 
+          type="button" 
+          onClick={() => {
+            if(validateAadhar()) {
+              sendData();
+            }
+          }}
+        >
+          Get OTP
+        </button>
+      ) : (
+        <>
           <input 
             required 
             type="text"
-            name="aadharno" 
-            value={aadhar.aadharno} 
-            onChange={changeHandler}
-            id="aadharno" 
-            placeholder='Enter your Aadhaar Number' 
-            className='w-full p-3 rounded-md text-xl outline-none border-b-2 border-black -mt-9 mb-7'
+            value={otp}
+            onChange={handleOTPChange}
+            placeholder='Enter OTP'
+            className='w-full p-3 placeholder:text-black rounded-md text-xl outline-none border-b-2 border-black mb-7'
           />
-          
-          {showOTP && (
-            <input 
-              required 
-              type="text"
-              value={otp}
-              onChange={handleOTPChange}
-              placeholder='Enter OTP'
-              className='w-full p-3 rounded-md text-xl outline-none border-b-2 border-black mb-7'
-            />
-          )}
-
-          {!showOTP ? (
-            <button 
-              className='bg-gray-400 hover:bg-blue-900 hover:scale-105 transition-all duration-300 text-white p-2 rounded-md w-full' 
-              type="button" 
-              onClick={() => {
-                if(validateAadhar()) {
-                  sendData();
-                }
-              }}
-            >
-              Login With OTP
-            </button>
-          ) : (
-            <button 
-              className='bg-gray-400 hover:bg-blue-900 hover:scale-105 transition-all duration-300 text-white p-2 rounded-md w-full' 
-              type="button" 
-              onClick={verifyOTP}
-            >
-              Verify OTP
-            </button>
-          )}
-        </div>
-      </form>
+          <button 
+            className='bg-gray-400 hover:bg-blue-900 hover:scale-105 transition-all duration-300 text-white p-2 rounded-md w-full' 
+            type="button" 
+            onClick={verifyOTP}
+          >
+            Submit OTP
+          </button>
+        </>
+      )}
+    </div>
+  </form>
 
       <footer className='absolute bottom-0 w-full flex justify-center items-center h-16 bg-[#020b50] text-white'>
         Copyright © 2024 Unique Identification Authority of India All Rights Reserved

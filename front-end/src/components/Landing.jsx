@@ -1,6 +1,9 @@
 import React from 'react'
+import Cards1 from './Cards1'
+import { useNavigate } from 'react-router-dom';
 
 const Landing = () => {
+  const navigate = useNavigate();
   return (
     <div className='w-screen h-screen'>
         <header className='flex gap-4 items-center justify-between w-3/5 mx-auto py-4 '>
@@ -17,11 +20,17 @@ const Landing = () => {
                 </div>
                 <div className='absolute  flex flex-col items-center justify-center text-white text-lg font-bold w-1/3  bg-white w-[328px] h-[384px] rounded-lg right-60  '>
                     <img src="src\assets\fingerPrint.54859169124a05ba0132.jpg" className='-mt-10 bg-cover scale-y-75 scale-x-90 ' alt="" width={160} height={150}  />
-                    <button className='bg-[#2072A0] text-white px-28 py-2 rounded-lg bg-custom-gradient mt-5'>Login</button>
+                    <button 
+                      className='bg-[#2072A0] text-white px-28 py-2 rounded-lg bg-custom-gradient mt-5'
+                      onClick={() => navigate('/login')}
+                    >
+                      Login
+                    </button>
                     <p className='text-black text-xs tracking-tighter font-normal '>Login with your Aadhaar And OTP</p>
                 </div>
 
         </div>
+        <Cards1/>
 
       
     </div>

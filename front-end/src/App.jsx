@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './index.css'
 import Login from './components/Login'
 import Landing from './components/Landing'
 import Cards1 from './components/Cards1'
 import Dashboard from './components/Dashboard'
+import { Routes, Route } from 'react-router-dom'
+import AadharCard from './components/AadharCard'
 // import Footer from './components/Footer'
 
 function App() {
@@ -13,11 +13,13 @@ function App() {
 
   return (
     <div className='w-screen h-screen'>
-      <Login />
-      {/* <Landing/> */}
-      {/* <Cards1/> */}
-      {/* <Dashboard/> */}
-      
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      {/* <h1>hii</h1> */}
+      {/* <AadharCard/> */}
     </div>
   )
 }

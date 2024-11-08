@@ -1,30 +1,27 @@
-
 from flask import Flask, jsonify, request
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from flask_mail import Mail, Message
 from flask_cors import CORS
+from dotenv import load_dotenv
 from secrets import randbelow
 import os
+
+load_dotenv()  # Ensure environment variables are loaded
 
 UserData = {
     123456789012: "kavyanshbagdi224@gmail.com",
     234567890123: "2023ucp1701@mnit.ac.in",
     456789012345: "2023ucp1690@mnit.ac.in"
 }
+UserAaddhar = {
+    123456789012: {"Name": "Ram", "DOB": "12/12/2004"},
+    234567890123: {"Name": "RKP", "DOB": "12/12/2012"},
+    456789012345: {"Name": "Shayam", "DOB": "23/2/2024"}
+}
 
 otp = {}
 app = Flask(__name__)
 CORS(app)  # Initialize CORS
-mail = Mail(app)
-
-# Secure email configuration using environment variables
-app.config["MAIL_SERVER"] = 'smtp.gmail.com'
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME")
-app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
-app.config["MAIL_USE_TLS"] = False
-app.config["MAIL_USE_SSL"] = True
 
 limiter = Limiter(get_remote_address, app=app, default_limits=["200 per day", "50 per hour"])
 
@@ -35,40 +32,35 @@ def index():
         data = request.get_json()
         print(data)
         aadhar_no = int(data.get("aadharno"))
-        if aadhar_no not in list(UserData.keys()):
+        if aadhar_no not in UserData:
             return jsonify({"error": "Invalid Aadhar Number"}), 400
 
-        
-        otp_code =f"{randbelow(1000000):06}"
+        otp_code = f"{randbelow(1000000):06}"
         otp[aadhar_no] = otp_code
+        print("Generated OTP:", otp_code)
         email = UserData[aadhar_no]
 
-        return jsonify({"isValid" : True, "code" : otp_code}), 200
-        msg = Message(
-            subject="UIDAI SMS Verification",
-            sender=app.config["MAIL_USERNAME"],
-            recipients=[email]
-        )
-        msg.body = f"Your OTP for Aadhaar (XX{str(aadhar_no)[-4:]}) is {otp_code}. To update Aadhaar, upload documents on myaadhaar.uidai.gov.in or visit Aadhaar Center. Call 1947 for info. - UIDAI"
-        mail.send(msg)
-
+        return jsonify({"isValid": True, "code": otp_code}), 200
 
     except Exception as e:
+        print(f"Error: {str(e)}")  # Print error for debugging
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
 
-@app.route("/verifyotp")
+@app.route("/verifyotp", methods=["POST"])
 def verify():
     try:
         data = request.get_json()
-        print(data)
         otpclient = int(data.get("otp"))
         aadharno = int(data.get("aadharno"))
-        if otpclient == otp[aadharno]:
-            pass
+        
+        if otp.get(aadharno) and otpclient == int(otp[aadharno]):
+            return jsonify({"isCorr": True, **UserAaddhar[aadharno]}), 200
+        else:
+            return jsonify({"isCorr": False}), 400
 
     except Exception as e:
-        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
-
+        print(f"Verification error: {str(e)}")  # Print error for debugging
+        return jsonify({"error": "Server Error"}), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

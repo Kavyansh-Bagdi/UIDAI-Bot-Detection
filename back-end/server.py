@@ -57,5 +57,18 @@ def index():
         return jsonify({"error": f"An error occurred: {str(e)}"}), 500
 
 @app.route("/verifyotp")
+def verify():
+    try:
+        data = request.get_json()
+        print(data)
+        otpclient = int(data.get("otp"))
+        aadharno = int(data.get("aadharno"))
+        if otpclient == otp[aadharno]:
+            pass
+
+    except Exception as e:
+        return jsonify({"error": f"An error occurred: {str(e)}"}), 500
+
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

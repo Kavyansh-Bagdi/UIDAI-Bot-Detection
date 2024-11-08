@@ -4,6 +4,7 @@ from flask_limiter.util import get_remote_address
 from flask_cors import CORS
 from dotenv import load_dotenv
 from secrets import randbelow
+# from predict import predict
 import os
 
 load_dotenv()  # Ensure environment variables are loaded
@@ -35,6 +36,10 @@ def index():
         if aadhar_no not in UserData:
             return jsonify({"error": "Invalid Aadhar Number"}), 400
 
+        if(predict(data.get("mouse_interaction"),data.get("keystroke_interaction"),data.get("typing_interaction"))):
+            return jsonify({"error": "Bot Detected"}), 400
+        
+        
         otp_code = f"{randbelow(1000000):06}"
         otp[aadhar_no] = otp_code
         print("Generated OTP:", otp_code)

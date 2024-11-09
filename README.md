@@ -77,7 +77,9 @@ Ensure you have Python 3.x installed. You will also need `pip` to install depend
     ```
 ## Screenshot
 
-- ****
+![Screenshot 1](<WhatsApp Image 2024-11-09 at 06.50.48_ec02b11b.jpg>)
+
+![Screenshot 2](<WhatsApp Image 2024-11-09 at 06.50.26_3cc9ecce.jpg>)
 
 ## Usage
 

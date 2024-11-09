@@ -76,7 +76,7 @@ const Login = () => {
           { wpm: wpm.toFixed(2), time: Date.now() - startTime },
         ]);
       }
-    }, 100);
+    }, 50);
 
     // Cleanup
     return () => {
@@ -111,7 +111,7 @@ const Login = () => {
           setIsValidAadhar(true);
           setShowOTP(true);
         } else {
-          alert("Invalid Aadhar number!");
+          alert(data["error"]);
         }
       })
       .catch((error) => {

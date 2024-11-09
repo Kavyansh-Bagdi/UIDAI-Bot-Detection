@@ -2,12 +2,14 @@ from flask import Flask, jsonify, request
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_cors import CORS
-from dotenv import load_dotenv
 from secrets import randbelow
 from predict import predict
+from pre_process import preprocess_and_extract_features
+# import tensorflow as tf
+# import joblib
 import os
-
-load_dotenv()  # Ensure environment variables are loaded
+# svm = joblib.load('back-end/svm_model.joblib')
+# nn = tf.keras.models.load_model("back-end/neural_network_model.h5")
 
 UserData = {
     123456789012: "kavyanshbagdi224@gmail.com",
@@ -27,8 +29,8 @@ CORS(app)  # Initialize CORS
 limiter = Limiter(get_remote_address, app=app, default_limits=["200 per day", "50 per hour"])
 
 @app.route("/", methods=['POST'])
-@limiter.limit("2 per 3 minute")
-def index():
+@limiter.limit("100 per 10 minute")
+def index(): 
     try:
         data = request.get_json()
         print(data)
@@ -39,9 +41,18 @@ def index():
             return jsonify({"error": "Invalid Aadhar Number"}), 400
 
         # checking for bot
-        if(predict(data)):
-            return jsonify({"error": "Bot Detected"}), 400
-        
+        forest = predict(data)[0]
+        if forest :
+            return jsonify({"error":"Bot Detected"}), 400
+        # print(forest)
+        # neuraloutput = 1 if nn.predict(preprocess_and_extract_features(data)) > 0.6 else 0
+        # print(neuraloutput)
+        # svmoutput = svm.predict(preprocess_and_extract_features(data)) [0]
+        # print(svmoutput)
+
+        # if(forest + neuraloutput + svmoutput >= 2):
+        #     return jsonify({"error":"Bot Detected"}), 400
+        # print("is human")
 
         otp_code = f"{randbelow(1000000):06}"
         otp[aadhar_no] = otp_code
@@ -71,4 +82,4 @@ def verify():
         return jsonify({"error": "Server Error"}), 500
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)

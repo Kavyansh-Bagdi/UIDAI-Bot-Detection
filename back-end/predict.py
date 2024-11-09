@@ -25,7 +25,7 @@ def predict(data):
         # Make the prediction
         y_pred_new = rf_model.predict(X_new)
 
-        print("Prediction successful:", y_pred_new)
+        # print("Prediction successful:", y_pred_new)
         return y_pred_new
 
     except Exception as e:

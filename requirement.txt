@@ -1,0 +1,6 @@
+flask_limiter
+flask_cors
+gunicorn
+tensorflow
+joblib
+scikit-learn

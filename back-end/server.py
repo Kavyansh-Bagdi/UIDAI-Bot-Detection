@@ -17,9 +17,9 @@ UserData = {
     456789012345: "2023ucp1690@mnit.ac.in"
 }
 UserAaddhar = {
-    123456789012: {"Name": "Ram", "DOB": "12/12/2004"},
-    234567890123: {"Name": "RKP", "DOB": "12/12/2012"},
-    456789012345: {"Name": "Shayam", "DOB": "23/2/2024"}
+    123456789012: {"Name": "Ram", "DOB": "12/12/2004","Gender": "Male"},
+    234567890123: {"Name": "RKP", "DOB": "12/12/2012","Gender": "Male"},
+    456789012345: {"Name": "Shayam", "DOB": "23/2/2024","Gender": "Male"}
 }
 
 otp = {}
@@ -73,7 +73,7 @@ def verify():
         aadharno = int(data.get("aadharno"))
         
         if otp.get(aadharno) and otpclient == int(otp[aadharno]):
-            return jsonify({"isCorr": True, **UserAaddhar[aadharno]}), 200
+            return jsonify({"isCorr": True, **UserAaddhar[aadharno],"aadharno":aadharno}), 200
         else:
             return jsonify({"isCorr": False}), 400
 

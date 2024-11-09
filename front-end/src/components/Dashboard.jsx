@@ -46,132 +46,64 @@ const Dashboard = () => {
           <div className="flex items-center mb-4">
             <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
+          <h2 className="text-lg md:text-xl font-bold text-gray-800">Download Aadhar</h2>
           <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
+          Click here to download digitally signed and password protected electronic copy of the Aadhaar.
           </p>
         </div>
         <div className="w-full p-4 bg-white rounded-lg shadow-lg border-2">
           <div className="flex items-center mb-4">
             <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
+          <h2 className="text-lg md:text-xl font-bold text-gray-800">Retrieve EID / Aadhaar number</h2>
           <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
+          Click here to find out Aadhaar number or Enrolment ID (EID).
           </p>
         </div>
         <div className="w-full p-4 bg-white rounded-lg shadow-lg border-2">
           <div className="flex items-center mb-4">
             <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
+          <h2 className="text-lg md:text-xl font-bold text-gray-800">Verify Email / Mobile</h2>
           <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
+            Click here to verify mobile and email registered with the Aadhaar.
           </p>
         </div>
         <div className="w-full p-4 bg-white rounded-lg shadow-lg border-2">
           <div className="flex items-center mb-4">
             <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
+          <h2 className="text-lg md:text-xl font-bold text-gray-800">VID Generator</h2>
           <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
+          Click here to generate 16 Digit Virtual ID(VID) linked to your Aadhaar.
           </p>
         </div>
         <div className="w-full p-4 bg-white rounded-lg shadow-lg border-2">
           <div className="flex items-center mb-4">
             <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
+          <h2 className="text-lg md:text-xl font-bold text-gray-800">Lock / Unlock Aadhaar</h2>
           <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
+          Click here to temporarily lock/unlock your Aadhaar. Please use this service carefully.
           </p>
         </div>
         <div className="w-full p-4 bg-white rounded-lg shadow-lg border-2">
           <div className="flex items-center mb-4">
             <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
+          <h2 className="text-lg md:text-xl font-bold text-gray-800">Bank Seeding Status</h2>
           <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
+          Click here to find your Bank Seeding Status.
           </p>
         </div>
+
         <div className="w-full p-4 bg-white rounded-lg shadow-lg border-2">
           <div className="flex items-center mb-4">
             <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
           </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
+          <h2 className="text-lg md:text-xl font-bold text-gray-800">Order Aadhaar PVC Card</h2>
           <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
-          </p>
-        </div>
-        <div className="w-full p-4 bg-white rounded-lg shadow-lg border-2">
-          <div className="flex items-center mb-4">
-            <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
-          </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
-          <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
-          </p>
-        </div>
-        <div className="w-full p-4 bg-white rounded-lg shadow-lg border-2">
-          <div className="flex items-center mb-4">
-            <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
-          </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
-          <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
-          </p>
-        </div>
-        <div className="w-full p-4 bg-white rounded-lg shadow-lg border-2">
-          <div className="flex items-center mb-4">
-            <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
-          </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
-          <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
-          </p>
-        </div>
-        <div className="w-full p-4 bg-white rounded-lg shadow-lg border-2">
-          <div className="flex items-center mb-4">
-            <img src="src\assets\Card1.svg" alt="" className='w-12 md:w-16'/>
-          </div>
-          <h2 className="text-lg md:text-xl font-bold text-gray-800">Document Update</h2>
-          <p className="text-sm md:text-base text-gray-600">
-            Click Here to upload your Proof of Identity (PoI) and Proof of Address (PoA) Documents.
-          </p>
-          <p className="mt-3 text-sm md:text-base text-red-600 font-semibold">
-            This service is free of cost till 14/12/2024.
+          Click here to order a secure, wallet-sized Aadhaar PVC card.
           </p>
         </div>
       </div>
@@ -180,6 +112,9 @@ const Dashboard = () => {
         <h1 className='text-xl md:text-2xl font-bold text-[#2072A0]'>Request for Aadhaar</h1>
         <p className='text-sm md:text-base text-black'>Status of various requests originated by you in the recent past. You can check the detailed status of the request by clicking on the "downward" arrow icon.</p>
       </div> */}
+      <footer className='mt-48 bottom-0 w-full flex justify-center items-center h-16 bg-[#020b50] text-white'>
+        Copyright © 2024 Unique Identification Authority of India All Rights Reserved
+      </footer>
     </div>
   )
 }

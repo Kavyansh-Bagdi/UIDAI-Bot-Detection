@@ -84,6 +84,12 @@ Ensure you have Python 3.x installed. You will also need `pip` to install depend
 ## Usage
 
 - **Detection**: 
-  Once the application is up and running, you can start detecting bots in real-time by providing input data (requests or logs from UIDAI systems). 
+  Once the application is up and running, you can start detecting bots in real-time by providing input data (requests or logs from UIDAI systems).
+
+## Contributers
+
+- Abhinav Kumar Gupta
+- Divyansh Pokharna
+- Kavyansh Bagdi
 
 

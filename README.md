@@ -91,5 +91,6 @@ Ensure you have Python 3.x installed. You will also need `pip` to install depend
 - Abhinav Kumar Gupta
 - Divyansh Pokharna
 - Kavyansh Bagdi
+- Rishabh Kumar Patel
 
 
